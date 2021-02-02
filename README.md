@@ -7,3 +7,7 @@ The aim of this project is to make you code a function that returns a line endin
 See the subjects for further information
 
 [SUBJECTS](Resources/)
+
+## Getting Started
+
+The [script](Resources/fun_with_fd.sh) shows how to use the fd on bash
