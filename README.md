@@ -6,7 +6,7 @@ The aim of this project is to make you code a function that returns a line endin
 
 See the subjects for further information
 
-[SUBJECTS](Resources/en_subject.pdf)
+[SUBJECTS](Resources/en.subject.pdf)
 
 ## Getting Started
 
