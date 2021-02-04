@@ -10,9 +10,9 @@ See the subjects for further information
 
 ## Getting Started
 
-The [script](Resources/fun_with_fd.sh) shows how to use the fd on bash
+- The [script](Resources/fun_with_fd.sh) shows how to use the fd on bash
 
-The [Makefile](Makefile) is optional, it's possible to use this for build the program with a given BUFFER_SIZE:
+- The [Makefile](Makefile) is optional, it's possible to use this for build the program with a given BUFFER_SIZE:
 
 compile the program with BUFFER_SIZE=42:
 ```
@@ -24,7 +24,9 @@ compile the program with the bonus files with BUFFER_SIZE=42:
 make bonus bf=42
 ```
 
-The repository contains a main, usefull to test the function:
+- The *.txt files are for testing purpose.
+
+- The repository contains a main, usefull to test the function:
 
 ### How to use the main
 
