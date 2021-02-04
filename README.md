@@ -18,10 +18,16 @@ The repository contains a main, usefull to test the function:
 
 It is necessary to define the BUFFER_SIZE macro in the compilation process ( -D BUFFER_SIZE= )
 
-It's possible to pass a file text to the program like this:
+It's possible to pass a text file to the program like this:
 
 ```
-./a.out hello.txt
+./a.out file.txt
+```
+
+Or like this, reading a text file line by line until an error or EOF:
+
+```
+./a.out file.txt E
 ```
 
 you can also execute a simple test that reads from stdin and writes on stdout
