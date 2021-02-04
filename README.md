@@ -12,6 +12,18 @@ See the subjects for further information
 
 The [script](Resources/fun_with_fd.sh) shows how to use the fd on bash
 
+The [Makefile](Makefile) is optional, it's possible to use this for build the program with a given BUFFER_SIZE:
+
+compile the program with BUFFER_SIZE=42:
+```
+make buf=42
+```
+
+compile the program with the bonus files with BUFFER_SIZE=42:
+```
+make bonus buf=42
+```
+
 The repository contains a main, usefull to test the function:
 
 ### How to use the main
@@ -21,29 +33,29 @@ It is necessary to define the BUFFER_SIZE macro in the compilation process ( -D 
 It's possible to pass a text file to the program like this:
 
 ```
-./a.out file.txt
+./gnl file.txt
 ```
 
 Or like this, reading a text file line by line until an error or EOF:
 
 ```
-./a.out file.txt E
+./gnl file.txt E
 ```
 
 you can also execute a simple test that reads from stdin and writes on stdout
 
 ```
-./a.out C
+./gnl C
 ```
 
 Or read directly from the stdin:
 
 ```
-./a.out 0
+./gnl 0
 ```
 
 Or create a pipeline with other tools:
 
 ```
-echo "Hello\n...This is hidden" | ./a.out 0
+echo "Hello\n...This is hidden" | ./gnl 0
 ```
