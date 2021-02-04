@@ -16,12 +16,12 @@ The [Makefile](Makefile) is optional, it's possible to use this for build the pr
 
 compile the program with BUFFER_SIZE=42:
 ```
-make buf=42
+make bf=42
 ```
 
 compile the program with the bonus files with BUFFER_SIZE=42:
 ```
-make bonus buf=42
+make bonus bf=42
 ```
 
 The repository contains a main, usefull to test the function:
