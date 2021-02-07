@@ -6,7 +6,7 @@
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 14:43:03 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/02/07 20:27:06 by edi-marc         ###   ########.fr       */
+/*   Updated: 2021/02/07 20:39:10 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 **	DESCRIPTION:	returns a line read from a fd, without \n
 **
 **	Consider that get_next_line has an undefined behavior if, between two calls,
-**	the same file descriptor switches to a different file before EOF has been reached on
-**	the first fd.
+**	the same file descriptor switches to a different 
+**	file before EOF has been reached on the first fd.
 **
 **	It is destructive on the content of line
 **
