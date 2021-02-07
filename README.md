@@ -63,3 +63,13 @@ Or create a pipeline with other tools:
 ```
 echo "Hello\n...This is hidden" | ./gnl 0
 ```
+
+It's also possible to pass 3 or more text files to the program like this:
+
+```
+./gnl_b file.txt eof.txt canto_V.txt
+```
+In this case the program reads a line of each file following the order in wich the arguments
+are passed and then it does the same thing but in reverse order.
+
+The main treats each argument passed with a different fd, therefore each reading made on a fd does not affect the others.
