@@ -6,7 +6,7 @@
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 13:43:04 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/02/07 17:21:16 by edi-marc         ###   ########.fr       */
+/*   Updated: 2021/02/07 20:27:45 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,10 @@
 **
 **	argv[3] = "name_of_the_file"	READ FROM text files (in current directory)
 **	   .    = "name_of_the_file_2"	read a line of each file following the order
-**	   .		.					in wich the arguments are passed and then
-**	   .		.					it does the same thing but in reverse order.
-** 	   .		.				
+**	   .		.					in wich the arguments are passed, then
+**	   .		.					it does the same thing but in reverse order,
+** 	   .		.					and again in the first order 
+**
 **									The program treats each argument passed
 **									with a different fd
 **
@@ -68,10 +69,15 @@ int main (int argc , char **argv)
 			if ((check = get_next_line(0, line)))
 				printf("%s\n\n", *line);
 			else if (check == -1)
+			{
 				printf("An error happened\n");
+				printf("%s\n", *line);
+			}
 			else if (check == 0)
+			{
 				printf("EOF has been reached\n");
-
+				printf("%s\n", *line);
+			}
 			return (0);
 		}
 		if (*argv[1])
@@ -94,9 +100,15 @@ int main (int argc , char **argv)
 				if ((check = get_next_line(fd, line)))
 					printf("%s\n\n", *line);
 				else if (check == -1)
+				{
 					printf("An error happened\n");
+					printf("%s\n", *line);
+				}
 				else if (check == 0)
+				{
 					printf("EOF has been reached\n");
+					printf("%s\n", *line);
+				}
 			}
 
 			return (0);
@@ -160,9 +172,15 @@ int main (int argc , char **argv)
 				printf("%s\n", *line);
 			}
 			else if (!check)
+			{
 				printf("\n--- EOF for fd : %d ( %s ) ---\n", fildes[j], argv[j + 1]);
+				printf("%s\n", *line);
+			}
 			else
+			{
 				printf("\n--- An error happened for fd : %d ( %s ) ---\n", fildes[j], argv[j + 1]);
+				printf("%s\n", *line);
+			}
 			j++;
 		}
 		j--;
@@ -175,10 +193,37 @@ int main (int argc , char **argv)
 				printf("%s\n", *line);
 			}
 			else if (!check)
+			{
 				printf("\n--- EOF for fd : %d ( %s ) ---\n", fildes[j], argv[j + 1]);
+				printf("%s\n", *line);
+			}
 			else
+			{
 				printf("\n--- An error happened for fd : %d ( %s ) ---\n", fildes[j], argv[j + 1]);
+				printf("%s\n", *line);
+			}
 			j--;
+		}
+		j++;
+		while (j < argc - 1)
+		{
+			check = get_next_line(fildes[j], line);
+			if (check == 1)
+			{
+				printf("\n--- LINE of fd : %d ( %s ) ---\n", fildes[j], argv[j + 1]);
+				printf("%s\n", *line);
+			}
+			else if (!check)
+			{
+				printf("\n--- EOF for fd : %d ( %s ) ---\n", fildes[j], argv[j + 1]);
+				printf("%s\n", *line);
+			}
+			else
+			{
+				printf("\n--- An error happened for fd : %d ( %s ) ---\n", fildes[j], argv[j + 1]);
+				printf("%s\n", *line);
+			}
+			j++;
 		}
 
 		return (0);

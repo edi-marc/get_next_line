@@ -6,7 +6,7 @@
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 14:00:46 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/02/07 13:46:51 by edi-marc         ###   ########.fr       */
+/*   Updated: 2021/02/07 18:25:49 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@ typedef	struct	s_fd
 }				t_fd;
 
 int				get_next_line(int fd, char **line);
-void			new_fd(t_fd **fdtable, int fd);
+void			add_fd(t_fd **fdtable, int fd);
 
 #endif

@@ -6,13 +6,13 @@
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 19:35:29 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/02/06 19:48:58 by edi-marc         ###   ########.fr       */
+/*   Updated: 2021/02/07 20:27:18 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-void	new_fd(t_fd **fdtable, int fd)
+void	add_fd(t_fd **fdtable, int fd)
 {
 	t_fd	*new_fd;
 
