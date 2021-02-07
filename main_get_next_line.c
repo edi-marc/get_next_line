@@ -16,20 +16,20 @@
 **	
 **	Focused on read from stdin or a text file, for the moment...
 **
-**	argv[1] = "C"					TEST read & write function
-**	argv[1] = "0"					READ FROM stdin
+**	argv[1] = "C"			TEST read & write function
+**	argv[1] = "0"			READ FROM stdin
 **	argv[1] = "name_of_the_file"	READ FROM text file (in current directory)
 **	
 **	argv[1] = "name_of_the_file"	READ FROM text file (in current directory)
-**	argv[2] = "E"					till the EOF
+**	argv[2] = "E"			till the EOF
 **
 **	argv[3] = "name_of_the_file"	READ FROM text files (in current directory)
-**		.	= "name_of_the_file_2"	read a line of each file following the order
-**		.			.				in wich the arguments are passed and then
-**		.			.				it does the same thing but in reverse order.
-**		.			.				
-**									The program treats each argument passed
-**									with a different fd
+**	   .    = "name_of_the_file_2"	read a line of each file following the order
+**	   .		.		in wich the arguments are passed and then
+**         .		.		it does the same thing but in reverse order.
+** 	   .		.				
+**					The program treats each argument passed
+**					with a different fd
 **
 */
 
