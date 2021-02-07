@@ -6,7 +6,7 @@
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 13:43:04 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/02/07 17:19:24 by edi-marc         ###   ########.fr       */
+/*   Updated: 2021/02/07 17:21:16 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 **	argv[3] = "name_of_the_file"	READ FROM text files (in current directory)
 **	   .    = "name_of_the_file_2"	read a line of each file following the order
 **	   .		.					in wich the arguments are passed and then
-**     .		.					it does the same thing but in reverse order.
+**	   .		.					it does the same thing but in reverse order.
 ** 	   .		.				
 **									The program treats each argument passed
 **									with a different fd
