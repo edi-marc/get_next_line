@@ -6,7 +6,7 @@
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 14:43:03 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/02/08 18:57:12 by edi-marc         ###   ########.fr       */
+/*   Updated: 2021/02/09 12:02:02 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 **
 **	It is destructive on the content of line
 **
-**	If a fd reach EOF, it is removed from the fd table
+**	If the buffer of a fd reach EOF, it is removed from the fd table
 */
 
 #include "get_next_line.h"
@@ -45,7 +45,8 @@ int	get_next_line(int fd, char **line)
 			(res = add_fd(fdtable, fd) != ERR))
 	{
 		temp_fd = get_fd(ptr_fd, fd);
-
+		read(temp_fd->fd, buf, BUFFER_SIZE);
+		write(1, buf, BUFFER_SIZE);
 	}
 	return (res);
 }

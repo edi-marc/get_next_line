@@ -6,7 +6,7 @@
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 13:43:04 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/02/09 10:58:26 by edi-marc         ###   ########.fr       */
+/*   Updated: 2021/02/09 11:58:36 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int main (int argc , char **argv)
 	{
 		/* pag. 171 - The C Programming Language */
 		/* simple program to copy its input to its output */
-		if (*argv[1] == 'C')
+		if (*argv[1] == 'C' && !argv[1][1])
 		{
 			char buf[BUFFER_SIZE];
 			int n;
@@ -60,7 +60,7 @@ int main (int argc , char **argv)
 
 			return (0);
 		}
-		if (*argv[1] == '0')
+		if (*argv[1] == '0' && !argv[1][1])
 		{
 			char *p_line;
 			char **line;
@@ -121,7 +121,7 @@ int main (int argc , char **argv)
 	}
 	if (argc == 3)
 	{
-		if (*argv[1] && *argv[2] == 'E')
+		if (*argv[1] && *argv[2] == 'E' && !argv[2][1])
 		{	
 			int fd;
 
@@ -144,7 +144,7 @@ int main (int argc , char **argv)
 	}
 	if (argc > 3)
 	{
-		if (argc == 4 && *argv[3] == 'S')
+		if (argc == 4 && *argv[3] == 'S' && !argv[3][1])
 		{
 			int fd;
 			char *p_line;
