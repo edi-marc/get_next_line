@@ -72,4 +72,11 @@ It's also possible to pass 3 or more text files to the program like this:
 In this case the program reads a line of each file following the order in wich the arguments
 are passed, then it does the same thing but in reverse order and again in the first order.
 
+You can also trigger the undefined behavior mentioned in the subject:
+
+```
+./gnl_b canto_V.txt file_txt S
+```
+Read a line on the first file than close the corresponding fd and open the second file on the same fd of the first and read a line
+
 The main treats each argument passed with a different fd, therefore each reading made on a fd does not affect the others.
