@@ -6,7 +6,7 @@
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 13:43:04 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/02/07 20:27:45 by edi-marc         ###   ########.fr       */
+/*   Updated: 2021/02/09 10:58:26 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@
 **	
 **	argv[1] = "name_of_the_file"	READ FROM text file (in current directory)
 **	argv[2] = "E"					till the EOF
+**
+**	argv[1] = "name_of_the_file"	READ FROM text files (in current directory)
+**	argv[2] = "name_of_the_file_2"	read a line on the first file than close
+**	argv[3] = "S"					the corresponding fd and open the second file
+**									on the same fd of the first and read a line
 **
 **	argv[3] = "name_of_the_file"	READ FROM text files (in current directory)
 **	   .    = "name_of_the_file_2"	read a line of each file following the order
@@ -139,6 +144,68 @@ int main (int argc , char **argv)
 	}
 	if (argc > 3)
 	{
+		if (argc == 4 && *argv[3] == 'S')
+		{
+			int fd;
+			char *p_line;
+			char **line;
+			int check;
+
+			p_line = NULL;
+			line = &p_line;
+			if ((fd = open(argv[1], O_RDONLY)) == -1)
+				printf("can't open %s\n", argv[1]);
+			else
+			{	
+				printf("\n--- FILE ---\n");
+				check = get_next_line(fd, line);
+				if (check == 1)
+				{
+					printf("\n--- LINE of fd : %d ( %s ) ---\n", fd, argv[1]);
+					printf("%s\n", *line);
+				}
+				else if (!check)
+				{
+					printf("\n--- EOF for fd : %d ( %s ) ---\n", fd, argv[1]);
+					printf("%s\n", *line);
+				}
+				else
+				{
+					printf("\n--- An error happened for fd : %d ( %s ) ---\n", fd, argv[1]);
+					printf("%s\n", *line);
+				}
+			}
+			if ((fd = close(fd)) == -1)
+				printf("can't close %s\n", argv[1]);
+			else
+			{
+				if ((fd = open(argv[2], O_RDONLY)) == -1)
+					printf("can't open %s\n", argv[2]);
+				else
+				{
+					printf("\n--- FILE ---\n");
+					check = get_next_line(fd, line);
+					if (check == 1)
+					{
+						printf("\n--- LINE of fd : %d ( %s ) ---\n", fd, argv[2]);
+						printf("%s\n", *line);
+					}
+					else if (!check)
+					{
+						printf("\n--- EOF for fd : %d ( %s ) ---\n", fd, argv[2]);
+						printf("%s\n", *line);
+					}
+					else
+					{
+						printf("\n--- An error happened for fd : %d ( %s ) ---\n", fd, argv[2]);
+						printf("%s\n", *line);
+					}
+				}
+			}
+
+			return (0);
+		}
+
 		int i;
 		int j;
 		int *fildes;
