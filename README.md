@@ -12,6 +12,8 @@ See the subjects for further information
 
 - The [script](Resources/fun_with_fd.sh) shows how to use the fd on bash
 
+- This simple [program](Resources/main_test_o_max.c) shows the value of OPEN_MAX
+
 - The [Makefile](Makefile) is optional, it's possible to use this for build the program with a given BUFFER_SIZE:
 
 compile the program with BUFFER_SIZE=42:
