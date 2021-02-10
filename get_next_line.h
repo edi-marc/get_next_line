@@ -6,7 +6,7 @@
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 14:00:46 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/02/08 19:08:16 by edi-marc         ###   ########.fr       */
+/*   Updated: 2021/02/09 14:21:10 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ int				get_next_line(int fd, char **line);
 int				add_fd(t_fd **fdtable, int fd);
 t_fd			*get_fd(t_fd *ptr_fd, int fd);
 void			del_fd(t_fd **fdtable, t_fd *ptr_fd);
+void			*ft_memchr(const void *s, int c, size_t n);
 
 #endif

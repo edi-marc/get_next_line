@@ -6,7 +6,7 @@
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 19:35:29 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/02/08 19:15:55 by edi-marc         ###   ########.fr       */
+/*   Updated: 2021/02/09 17:05:05 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,18 @@ void	del_fd(t_fd **fdtable, t_fd *ptr_fd)
 		ptr_fd->next = NULL;
 		free(ptr_fd);
 	}
+}
+
+void	*ft_memchr(const void *s, int c, size_t n)
+{
+	size_t i;
+
+	i = 0;
+	while (i < n)
+	{
+		if (((unsigned char *)s)[i] == (unsigned char)c)
+			return (&(((void *)s)[i]));
+		i++;
+	}
+	return (0);
 }
