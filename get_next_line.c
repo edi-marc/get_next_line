@@ -6,7 +6,7 @@
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 14:43:03 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/02/09 17:05:02 by edi-marc         ###   ########.fr       */
+/*   Updated: 2021/02/10 20:06:51 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,10 @@ int	get_next_line(int fd, char **line)
 			(res = add_fd(fdtable, fd) != ERR))
 	{
 		temp_fd = get_fd(ptr_fd, fd);
-		while ((res && res = read(temp_fd->fd, buf, BUFFER_SIZE)) != ERR)
+		// check if the \n is present in the buffer
+		if (temp_fd->buff_read)
+		else
+		while ((res = read(temp_fd->fd, buf, BUFFER_SIZE)) != ERR)
 		{
 			if (ft_memchr(buf, 10, res) && res)
 			{
@@ -56,6 +59,8 @@ int	get_next_line(int fd, char **line)
 		}
 		if (res == ERR)
 			del_fd(temp_fd);
+		else
+
 	}
 	return (res);
 }
