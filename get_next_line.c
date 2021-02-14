@@ -6,7 +6,7 @@
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 14:43:03 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/02/12 17:20:04 by edi-marc         ###   ########.fr       */
+/*   Updated: 2021/02/14 16:10:47 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,29 +46,30 @@ int	get_next_line(int fd, char **line)
 	{
 		tmp_fd = get_fd(ptr_fd, fd);
 		*line = NULL;
-		while (!(ft_memchr(tmp_fd->bf_r, 10, tmp_fd->ln_b)) && res != ERR)
+		while (!(ft_memchr(tmp_fd->bf_r, 10, tmp_fd->ln_b)) && res > 0)
 		{
 			res = read(tmp_fd->fd, buf, BUFFER_SIZE);
 			if (res > 0)
 				res = mv_buf_to_buf_fd(tmp_fd, buf, res);
 		}
-		if (!(res != ERR && (res = mv_buf_ln(tmp_fd, *line, res) > 0)))
-			res = final_check(res, tmp_fd, fdtable);
+		if (res != ERR)
+			res = mv_buf_ln(tmp_fd, line, res);
+		res = final_check(res, tmp_fd, fdtable);
 	}
 	return (res);
 }
 
-int	mv_buf_ln(t_fd *ptr_fd, char *dst, int res)
+int	mv_buf_ln(t_fd *ptr_fd, char **line, int res)
 {
 	size_t	n_b;
 
 	n_b = ptr_fd->ln_b;
 	if ((ft_memchr(ptr_fd->bf_r, 10, ptr_fd->ln_b)))
-		n_b = ptr_fd->bf_r - (ft_memchr(ptr_fd->bf_r, 10, ptr_fd->ln_b));
-	if ((dst = malloc((n_b + 1) * sizeof(*dst))))
+		n_b = ((ft_memchr(ptr_fd->bf_r, 10, ptr_fd->ln_b)) - ptr_fd->bf_r);
+	if ((*line = malloc((n_b + 1) * sizeof(**line))))
 	{
-		dst[n_b + 1] = '\0';
-		ft_memcpy(dst, ptr_fd->bf_r, n_b);
+		(*line)[n_b] = '\0';
+		ft_memcpy(*line, ptr_fd->bf_r, n_b);
 		if (res != EOF_RCHD)
 			res = READL_OK;
 		n_b++;
@@ -92,9 +93,16 @@ int	adj_buff(t_fd *ptr_fd, size_t n_b, int res)
 			ft_memcpy(tmp_buf, (ptr_fd->bf_r) + n_b, new_len);
 			free(ptr_fd->bf_r);
 			ptr_fd->bf_r = tmp_buf;
+			ptr_fd->ln_b = new_len;
 		}
 		else
 			res = ERR;
+	}
+	else
+	{
+		free(ptr_fd->bf_r);
+		ptr_fd->bf_r = NULL;
+		ptr_fd->ln_b = 0;
 	}
 	return (res);
 }
@@ -103,12 +111,12 @@ int	mv_buf_to_buf_fd(t_fd *ptr_fd, char *buf, int res)
 {
 	void	*tmp_bf;
 
-	if (!(tmp_bf = malloc((ptr_fd->ln_b + res) * sizeof(void *))))
+	if (!(tmp_bf = malloc((ptr_fd->ln_b + res) * sizeof(*tmp_bf))))
 		res = ERR;
 	else
 	{
 		ft_memcpy(tmp_bf, ptr_fd->bf_r, ptr_fd->ln_b);
-		ft_memcpy(tmp_bf + ptr_fd->ln_b + 1, buf, res);
+		ft_memcpy(tmp_bf + ptr_fd->ln_b, buf, res);
 		free(ptr_fd->bf_r);
 		ptr_fd->ln_b = ptr_fd->ln_b + res;
 		ptr_fd->bf_r = tmp_bf;
@@ -120,7 +128,7 @@ int	final_check(int res, t_fd *ptr_fd, t_fd **fdtable)
 {
 	if (res == ERR)
 		del_fd(fdtable, ptr_fd);
-	else if (res == 0 && !ptr_fd->ln_b)
+	else if (res == 0 && !(ptr_fd->ln_b))
 	{
 		res = EOF_RCHD;
 		del_fd(fdtable, ptr_fd);

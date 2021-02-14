@@ -6,13 +6,11 @@
 #    By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/04 17:24:47 by edi-marc          #+#    #+#              #
-#    Updated: 2021/02/12 18:15:13 by edi-marc         ###   ########.fr        #
+#    Updated: 2021/02/14 13:52:10 by edi-marc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = gnl
-
-DB_NAME = db_gnl
 
 BNAME = gnl_b
 
@@ -48,18 +46,15 @@ all: $(NAME)
 
 bonus: $(BNAME)
 
-debug: clean $(DB_NAME) 
+debug: clean $(SRC) $(MAIN)
+	@$(CC) $(FLAGS) $(DB_FLAG) $(MFLAGS) $(BUF)$(bf) $(SRC) $(MAIN)
 
 clean: 
-	@$(RM) $(GCH) $(NAME) $(BNAME) $(STD_NAME) $(DB_NAME) $(DB_SYM)
+	@$(RM) $(GCH) $(NAME) $(BNAME) $(STD_NAME) $(DB_SYM)
 
 re: clean all
 
 rbonus: clean bonus
-
-$(DB_NAME) : $(SRC) $(MAIN)
-	@$(CC) $(FLAGS) $(DB_FLAG) $(MFLAGS) $(BUF)$(bf) $(SRC) $(MAIN)
-	@$(RENAME) $(STD_NAME) $(DB_NAME)
 
 $(NAME) : $(SRC) $(MAIN)
 	@$(CC) $(FLAGS) $(MFLAGS) $(BUF)$(bf) $(SRC) $(MAIN)
