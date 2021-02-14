@@ -6,7 +6,7 @@
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 14:00:46 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/02/13 17:00:10 by edi-marc         ###   ########.fr       */
+/*   Updated: 2021/02/14 18:54:34 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ void			*ft_memcpy(void *dst, const void *src, size_t n);
 int				mv_buf_ln(t_fd *ptr_fd, char **line, int res);
 int				adj_buff(t_fd *ptr_fd, size_t n_b, int res);
 int				mv_buf_to_buf_fd(t_fd *ptr_fd, char *buf, int res);
-int				final_check(int res, t_fd *ptr_fd, t_fd **fdtable);
+int				final_check(int res, t_fd *ptr_fd, t_fd **fdtable, char *line);
 
 #endif

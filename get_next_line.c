@@ -6,7 +6,7 @@
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 14:43:03 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/02/14 17:07:06 by edi-marc         ###   ########.fr       */
+/*   Updated: 2021/02/14 19:17:37 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	get_next_line(int fd, char **line)
 		}
 		if (res != ERR)
 			res = mv_buf_ln(tmp_fd, line, res);
-		res = final_check(res, tmp_fd, fdtable);
+		res = final_check(res, tmp_fd, fdtable, *line);
 	}
 	return (res);
 }
@@ -125,11 +125,11 @@ int	mv_buf_to_buf_fd(t_fd *ptr_fd, char *buf, int res)
 	return (res);
 }
 
-int	final_check(int res, t_fd *ptr_fd, t_fd **fdtable)
+int	final_check(int res, t_fd *ptr_fd, t_fd **fdtable, char *line)
 {
 	if (res == ERR)
 		del_fd(fdtable, ptr_fd);
-	else if (res == 0 && !(ptr_fd->ln_b))
+	else if (res == 0 && !(ptr_fd->ln_b) && !(*line))
 	{
 		res = EOF_RCHD;
 		del_fd(fdtable, ptr_fd);
