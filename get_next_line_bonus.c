@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/02 14:43:03 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/02/14 17:07:06 by edi-marc         ###   ########.fr       */
+/*   Created: 2021/02/14 17:17:21 by edi-marc          #+#    #+#             */
+/*   Updated: 2021/02/14 17:17:37 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 **	If the buffer of a fd reach EOF, it is removed from the fd table
 */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 int	get_next_line(int fd, char **line)
 {
