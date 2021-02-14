@@ -77,7 +77,7 @@ are passed, then it does the same thing but in reverse order and again in the fi
 You can also trigger the undefined behavior mentioned in the subject:
 
 ```
-./gnl_b canto_V.txt file_txt S
+./gnl_b canto_V.txt file.txt S
 ```
 Read a line on the first file than close the corresponding fd and open the second file on the same fd of the first and read a line
 
