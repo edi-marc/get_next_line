@@ -82,3 +82,15 @@ You can also trigger the undefined behavior mentioned in the subject:
 Read a line on the first file than close the corresponding fd and open the second file on the same fd of the first and read a line
 
 The main treats each argument passed with a different fd, therefore each reading made on a fd does not affect the others.
+
+## Problems
+
+With a big BUFFER_SIZE (like 999999999) the program has a SEGFAULT (EXEC_BAD_ACCESS).
+The problem is related to the size of the variable buf that resides on the stack (not in the heap) and depends on BUFFER_SIZE,
+if BUFFER_SIZE > the maximum space available for the stack , the program has a SEGFAULT.
+
+To see some limits on UNIX related system use:
+
+```
+ulimit -a
+```
