@@ -6,14 +6,12 @@
 /*   By: edi-marc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 18:34:10 by edi-marc          #+#    #+#             */
-/*   Updated: 2021/02/13 19:03:10 by edi-marc         ###   ########.fr       */
+/*   Updated: 2021/02/15 10:50:10 by edi-marc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-**
 **	Only for testing purpose during development
-**
 */
 
 #include "get_next_line.h"
