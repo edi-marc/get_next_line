@@ -6,7 +6,7 @@
 #    By: emdi-mar <emdi-mar@student.42roma.it>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/30 22:46:33 by emdi-mar          #+#    #+#              #
-#    Updated: 2025/01/30 22:56:47 by emdi-mar         ###   ########.fr        #
+#    Updated: 2025/02/15 14:19:56 by emdi-mar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,10 @@ RM = /bin/rm -rf
 
 all: $(NAME)
 
+nobuffs: $(SRC) $(MAIN)
+	@$(CC) $(FLAGS) $(SRC) $(MAIN)
+	@$(RENAME) $(STD_NAME) $(NAME)
+
 bonus: $(BNAME)
 
 debug: clean $(SRC) $(MAIN)
@@ -70,4 +74,4 @@ $(BNAME) : $(BSRC) $(MAIN)
 	@$(CC) $(FLAGS) $(MFLAGS) $(BUF)$(bf) $(BSRC) $(MAIN)
 	@$(RENAME) $(STD_NAME) $(BNAME)
 
-.PHONY: all bonus clean re rbonus debug
+.PHONY: all bonus clean re rbonus debug nobuffs
