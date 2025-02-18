@@ -6,7 +6,7 @@
 /*   By: emdi-mar <emdi-mar@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 19:59:25 by emdi-mar          #+#    #+#             */
-/*   Updated: 2025/02/15 14:29:57 by emdi-mar         ###   ########.fr       */
+/*   Updated: 2025/02/17 19:38:18 by emdi-mar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*get_next_line(int fd)
 	line = NULL;
 	if (BUFFER_SIZE <= 0 || fd < 0)
 		return (NULL);
-	buffer = line_malloc(fd, line);
+	buffer = line_malloc(fd, buffer);
 	if (!buffer)
 		return (NULL);
 	line = next_line(buffer);

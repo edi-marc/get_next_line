@@ -6,7 +6,7 @@
 /*   By: emdi-mar <emdi-mar@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 11:00:21 by emdi-mar          #+#    #+#             */
-/*   Updated: 2025/02/15 15:20:09 by emdi-mar         ###   ########.fr       */
+/*   Updated: 2025/02/18 11:45:48 by emdi-mar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,6 @@
 */
 
 #include "get_next_line.h"
-
-#include <stdio.h>
 #include <fcntl.h>
 
 int main(int argc, char **argv)
@@ -65,11 +63,9 @@ int main(int argc, char **argv)
 			char	*line;
 
 			line = NULL;
-			printf("\n--- PRIMA ---\n");
-			printf("%s\n", line);
-			printf("\n--- DOPO ---\n");
+			printf("\n--- LETTURA E SCRITTURA FROM FD 0 ---\n");
 			line = get_next_line(0);
-			printf("%s\n\n", line);
+			printf("%s", line);
 			return (0);
 		}
 		if (*argv[1])
@@ -80,16 +76,12 @@ int main(int argc, char **argv)
 				printf("can't open %s\n", argv[1]);
 			else
 			{	
-				char *p_line;
-				char **line;
+				char *line;
 
-				p_line = NULL;
-				line = &p_line;
-				printf("\n--- PRIMA ---\n");
-				printf("%s\n", *line);
-				printf("\n--- DOPO ---\n");
-				*line = get_next_line(fd);
-				printf("%s\n\n", *line);
+				line = NULL;
+				printf("\n--- LETTURA DAL FILE ---\n");
+				line = get_next_line(fd);
+				printf("%s", line);
 			}
 
 			return (0);
@@ -110,7 +102,7 @@ int main(int argc, char **argv)
 				line = get_next_line(fd);
 				while (line)
 				{
-					printf("%s\n", line);
+					printf("%s", line);
 					line = get_next_line(fd);
 				}
 			}
@@ -135,7 +127,7 @@ int main(int argc, char **argv)
 				printf("\n--- FILE ---\n");
 				*line = get_next_line(fd);
 				printf("\n--- LINE of fd : %d ( %s ) ---\n", fd, argv[1]);
-				printf("%s\n", *line);
+				printf("%s", *line);
 			}
 			if ((fd = close(fd)) == -1)
 				printf("can't close %s\n", argv[1]);
@@ -148,7 +140,9 @@ int main(int argc, char **argv)
 					printf("\n--- FILE ---\n");
 					printf("\n--- LINE of fd : %d ( %s ) ---\n", fd, argv[2]);
 					*line = get_next_line(fd);
+					printf("%s", *line);
 				}
+			}
 
 			return (0);
 		}
@@ -178,7 +172,7 @@ int main(int argc, char **argv)
 		{
 			*line = get_next_line(fildes[j]);
 			printf("\n--- LINE of fd : %d ( %s ) ---\n", fildes[j], argv[j + 1]);
-			printf("%s\n", *line);
+			printf("%s", *line);
 			j++;
 		}
 		j--;
@@ -186,7 +180,7 @@ int main(int argc, char **argv)
 		{
 			*line = get_next_line(fildes[j]);
 			printf("\n--- LINE of fd : %d ( %s ) ---\n", fildes[j], argv[j + 1]);
-			printf("%s\n", *line);
+			printf("%s", *line);
 			j--;
 		}
 		j++;
@@ -194,7 +188,7 @@ int main(int argc, char **argv)
 		{
 			*line = get_next_line(fildes[j]);
 			printf("\n--- LINE of fd : %d ( %s ) ---\n", fildes[j], argv[j + 1]);
-			printf("%s\n", *line);
+			printf("%s", *line);
 			j++;
 		}
 
@@ -202,5 +196,6 @@ int main(int argc, char **argv)
 	}
 
 	return (0);
-	}
+
 }
+

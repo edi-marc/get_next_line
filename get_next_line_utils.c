@@ -6,7 +6,7 @@
 /*   By: emdi-mar <emdi-mar@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 19:59:46 by emdi-mar          #+#    #+#             */
-/*   Updated: 2025/02/15 14:56:05 by emdi-mar         ###   ########.fr       */
+/*   Updated: 2025/02/18 10:23:23 by emdi-mar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,30 +18,24 @@ char	*ft_strjoin_s(char *s1, char *s2)
 	size_t	i;
 	size_t	j;
 
-	p = NULL;
 	if (!s1)
 	{
 		s1 = (char *)malloc(sizeof(char) * 1);
-		if (!s1)
-			return (NULL);
 		s1[0] = '\0';
 	}
 	if (!s2)
 		return (NULL);
-	i = ft_strlen(s1);
-	j = ft_strlen(s2);
-	p = (char *)malloc(sizeof(char) * (i + j + 1));
-	if (p)
-	{
-		i = 0;
-		j = 0;
-		while (s1[i])
-			p[j++] = s1[i++];
-		i = 0;
-		while (s2[i])
-                        p[j++] = s2[i++];
-		p[j] = '\0';
-	}
+	p = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!p)
+		return (NULL);
+	i = 0;
+	j = 0;
+	while (s1[i])
+		p[j++] = s1[i++];
+	i = 0;
+	while (s2[i])
+		p[j++] = s2[i++];
+	p[j] = '\0';
 	free(s1);
 	return (p);
 }
@@ -92,7 +86,7 @@ char	*next_line(char *str)
 	size_t	i;
 
 	i = 0;
-	if (!str)
+	if (str[i] == '\0')
 		return (NULL);
 	while (str[i] && str[i] != '\n')
 		i++;
@@ -105,6 +99,11 @@ char	*next_line(char *str)
 		new[i] = str[i];
 		i++;
 	}
+	if (str[i] == '\n')
+	{
+		new[i] = '\n';
+		i++;
+	}
 	new[i] = '\0';
 	return (new);
 }
@@ -112,8 +111,8 @@ char	*next_line(char *str)
 char	*clean_line(char *line)
 {
 	char	*str;
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
 	i = 0;
 	while (line[i] && line[i] != '\n')
